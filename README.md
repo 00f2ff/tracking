@@ -12,7 +12,7 @@ Frontend: Functional React + TypeScript
    is ready. Wait a few minutes and then refresh the page. You'll know
    the server is ready when a very special character shows up.
 
-Note: the UX for updating is terrible -- all fields need to be populated
+Note: the UX for updating isn't great -- all fields need to be populated
 for the update to go through.
 
 ### Stopping
