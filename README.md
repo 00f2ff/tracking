@@ -34,4 +34,4 @@ Things I would add if I had more time:
 * Client-/server-side request data sanitization for security (e.g. avoid XSS, database injection, etc.)
 * Image hosting on [Docker Hub](https://hub.docker.com) to make this project faster / easier to run
 * Better React state handling to avoid page repainting & smooth visual updates
-* Deployment (CI/CD with deploy hook on `main` branch, automated testing, deployment to an AWS EC2 instance)
+* Deployment (CI/CD with deploy hook on `main` branch, automated testing, deployment to AWS ECS or EKS)
