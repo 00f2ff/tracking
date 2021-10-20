@@ -1,6 +1,6 @@
 # Tracking App
 
-Backend: Async Kotlin server with H2 datastore
+Backend: Async Kotlin server with H2 datastore  
 Frontend: Functional React + TypeScript
 
 ### Steps to run
@@ -14,4 +14,4 @@ Frontend: Functional React + TypeScript
 * `docker stop tracking_app_1` will kill the Kotlin server running in detached mode
 
 Note: there is a Dockerfile in `tracking-ui`, but it was being finicky
-with the compose so I changed how `run.sh` works
+with the compose so I changed `run.sh` to run the React app locally
