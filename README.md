@@ -7,7 +7,13 @@ Frontend: Functional React + TypeScript
 1. Run `chmod +x run.sh` to make `run.sh` an executable
 2. Run `./run.sh` to initiate a docker-compose for the Kotlin server &
    run the React app
-3. Visit `localhost:3000` and interact with the app
+3. Visit `localhost:3000` and interact with the app. The Kotlin server is
+   running in detached mode so it probably won't load before the client
+   is ready. Wait a few minutes and then refresh the page. You'll know
+   the server is ready when a very special character shows up.
+
+Note: the UX for updating is terrible -- all fields need to be populated
+for the update to go through.
 
 ### Stopping
 * cmd+C will kill the client
