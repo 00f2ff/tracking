@@ -18,4 +18,5 @@ type ApiDataType = {
   status: string
   characters: ICharacter[]
 	character?: ICharacter
+	id?: number
 }

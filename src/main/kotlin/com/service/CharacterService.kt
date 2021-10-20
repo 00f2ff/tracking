@@ -10,6 +10,9 @@ class CharacterService {
         if (!character.isValid()) {
             throw Exception("Invalid character stats")
         }
+        if (character.id != null) {
+            throw Exception("Cannot create character with non-null id")
+        }
         val id = transaction {
             Characters.insert {
                 it[name] = character.name

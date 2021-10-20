@@ -7,6 +7,7 @@ import com.plugins.*
 import com.service.CharacterService
 import io.ktor.application.*
 import io.ktor.features.*
+import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.serialization.*
@@ -21,7 +22,16 @@ fun Application.module() {
         json()
     }
     install(CORS) {
-        host("0.0.0.0:3000")
+//        host("localhost:3000")
+        anyHost()
+        method(HttpMethod.Options)
+        method(HttpMethod.Get)
+        method(HttpMethod.Post)
+        method(HttpMethod.Put)
+        method(HttpMethod.Delete)
+        header("authorization")
+        allowCredentials = true
+        allowNonSimpleContentTypes = true
     }
 
     DB().initialize()
