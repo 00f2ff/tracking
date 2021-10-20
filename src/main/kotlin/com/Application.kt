@@ -20,10 +20,12 @@ fun Application.module() {
     install(ContentNegotiation) {
         json()
     }
+    install(CORS) {
+        host("0.0.0.0:3000")
+    }
 
-    val db = DB()
-    db.initialize()
-    val characterService = CharacterService(db)
+    DB().initialize()
+    val characterService = CharacterService()
     configureRouting(characterService)
 //    configureSecurity()
 }

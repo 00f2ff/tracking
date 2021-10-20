@@ -1,15 +1,11 @@
 package com.service
 
 import com.dao.Characters
-import com.dao.DB
-import com.data.Abbreviation
 import com.data.Character
-import com.data.Stat
-import com.plugins.Utils
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class CharacterService(val db: DB) {
+class CharacterService {
     fun create(character: Character): Character {
         if (!character.isValid()) {
             throw Exception("Invalid character stats")
@@ -17,12 +13,12 @@ class CharacterService(val db: DB) {
         val id = transaction {
             Characters.insert {
                 it[name] = character.name
-                it[strength] = character.strength.value
-                it[dexterity] = character.dexterity.value
-                it[constitution] = character.constitution.value
-                it[wisdom] = character.wisdom.value
-                it[intelligence] = character.intelligence.value
-                it[charisma] = character.charisma.value
+                it[strength] = character.strength
+                it[dexterity] = character.dexterity
+                it[constitution] = character.constitution
+                it[wisdom] = character.wisdom
+                it[intelligence] = character.intelligence
+                it[charisma] = character.charisma
             } get Characters.id
         }
         return character.copy(id = id)
@@ -34,12 +30,12 @@ class CharacterService(val db: DB) {
                 Character(
                     id = result[Characters.id],
                     name = result[Characters.name],
-                    strength = Stat(Abbreviation.STR, result[Characters.strength]),
-                    dexterity = Stat(Abbreviation.DEX, result[Characters.dexterity]),
-                    constitution = Stat(Abbreviation.CON, result[Characters.constitution]),
-                    intelligence = Stat(Abbreviation.INT, result[Characters.intelligence]),
-                    wisdom = Stat(Abbreviation.WIS, result[Characters.wisdom]),
-                    charisma = Stat(Abbreviation.CHA, result[Characters.charisma]),
+                    strength = result[Characters.strength],
+                    dexterity = result[Characters.dexterity],
+                    constitution = result[Characters.constitution],
+                    intelligence = result[Characters.intelligence],
+                    wisdom = result[Characters.wisdom],
+                    charisma = result[Characters.charisma],
                 )
             }
         }
@@ -55,12 +51,12 @@ class CharacterService(val db: DB) {
                 Character(
                     id = result[Characters.id],
                     name = result[Characters.name],
-                    strength = Stat(Abbreviation.STR, result[Characters.strength]),
-                    dexterity = Stat(Abbreviation.DEX, result[Characters.dexterity]),
-                    constitution = Stat(Abbreviation.CON, result[Characters.constitution]),
-                    intelligence = Stat(Abbreviation.INT, result[Characters.intelligence]),
-                    wisdom = Stat(Abbreviation.WIS, result[Characters.wisdom]),
-                    charisma = Stat(Abbreviation.CHA, result[Characters.charisma]),
+                    strength = result[Characters.strength],
+                    dexterity = result[Characters.dexterity],
+                    constitution = result[Characters.constitution],
+                    intelligence = result[Characters.intelligence],
+                    wisdom = result[Characters.wisdom],
+                    charisma = result[Characters.charisma],
                 )
             }
         }
@@ -70,12 +66,12 @@ class CharacterService(val db: DB) {
         transaction {
             Characters.update({Characters.id eq character.id!!}) {
                 it[name] = character.name
-                it[strength] = character.strength.value
-                it[dexterity] = character.dexterity.value
-                it[constitution] = character.constitution.value
-                it[wisdom] = character.wisdom.value
-                it[intelligence] = character.intelligence.value
-                it[charisma] = character.charisma.value
+                it[strength] = character.strength
+                it[dexterity] = character.dexterity
+                it[constitution] = character.constitution
+                it[wisdom] = character.wisdom
+                it[intelligence] = character.intelligence
+                it[charisma] = character.charisma
             }
         }
         return character

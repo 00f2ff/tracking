@@ -12,32 +12,31 @@ enum class Abbreviation(val value: String) {
     CHA("Charisma")
 }
 
-@Serializable
-data class Stat(val abbreviation: Abbreviation, val value: Int)
+//@Serializable
+//data class Stat(val abbreviation: Abbreviation, val value: Int)
 
 @Serializable
 data class Character(
     val id: Int? = null,
     val name: String,
-    val strength: Stat,
-    val dexterity: Stat,
-    val constitution: Stat,
-    val intelligence: Stat,
-    val wisdom: Stat,
-    val charisma: Stat
+    val strength: Int,
+    val dexterity: Int,
+    val constitution: Int,
+    val intelligence: Int,
+    val wisdom: Int,
+    val charisma: Int
 ) {
     fun isValid(): Boolean {
         fun valid(value: Int): Boolean = value in 1..20
-        val stats = listOf(
+        return listOf(
             this.strength,
             this.constitution,
             this.dexterity,
             this.intelligence,
             this.wisdom,
             this.charisma
-        ).map { it.value }
+        ).fold(true) {total, value -> total && valid(value)}
 
-        return stats.fold(true) {total, value -> total && valid(value)}
     }
 }
 
