@@ -1,8 +1,6 @@
 package com.plugins
 
-import com.dao.DB
 import com.data.Character
-import com.data.characterStorage
 import com.service.CharacterService
 import io.ktor.routing.*
 import io.ktor.http.*
@@ -40,22 +38,16 @@ fun Application.configureRouting(characterService: CharacterService) {
                 val result = characterService.create(character)
                 call.respond(HttpStatusCode.Created, Json.encodeToJsonElement(result))
             }
-//
+
             put {
                 val character = call.receive<Character>()
                 if (!character.isValid()) {
                     call.respond(HttpStatusCode.BadRequest, "Character stats must be between 1 and 20")
                 }
                 val result = characterService.update(character)
-//                val oldCharacter = characterStorage.find { it.id == character.id }
-//                if (oldCharacter == null) {
-//                    call.respond(HttpStatusCode.NotFound, "Character with id ${character.id} not found")
-//                }
-//                val index = characterStorage.indexOf(oldCharacter)
-//                characterStorage[index] = character
                 call.respond(HttpStatusCode.OK, Json.encodeToJsonElement(result))
             }
-//
+
             delete("{id}") {
                 val id = call.parameters["id"]
                 if (id.isNullOrBlank()) {

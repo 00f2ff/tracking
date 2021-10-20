@@ -23,16 +23,16 @@ class DB {
             addLogger(StdOutSqlLogger)
             SchemaUtils.create(Characters)
 
-            val agnar = Characters.insert { // todo: this should be a migration
-                it[name] = "agnar"
-                it[strength] = 1
-                it[dexterity] = 1
-                it[constitution] = 1
-                it[wisdom] = 1
-                it[intelligence] = 1
+            val felix = Characters.insert { // todo: this should be a migration
+                it[name] = "Felix the Flatulent"
+                it[strength] = 4
+                it[dexterity] = 5
+                it[constitution] = 18
+                it[wisdom] = 3
+                it[intelligence] = 3
                 it[charisma] = 1
             } get Characters.id
-            println(agnar)
+            println(felix)
 
         }
     }

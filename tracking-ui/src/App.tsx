@@ -44,19 +44,21 @@ const handleDeleteCharacter = (id: number|null): void => {
 
   return (
     <main className='App'>
-      <CreateCharacter saveCharacter={handleCreateCharacter} />
-      <UpdateCharacter updateCharacter={handleUpdateCharacter} />
-      <h2>Characters</h2>
-      {characters.map((character: ICharacter) => (
-        <Character
-          key={character.id}
-          character={character}
-          deleteCharacter={handleDeleteCharacter}
-          // updateCharacter={handleUpdateCharacter}
-          // deleteTodo={handleDeleteTodo}
-          // todo={todo}
-        />
-      ))}
+      <div>
+        <h2>Characters</h2>
+        {characters.map((character: ICharacter) => (
+          <Character
+            key={character.id}
+            character={character}
+            deleteCharacter={handleDeleteCharacter}
+          />
+        ))}
+      </div>
+      <div>
+        <CreateCharacter saveCharacter={handleCreateCharacter} />
+        <UpdateCharacter updateCharacter={handleUpdateCharacter} />
+      </div>
+
     </main>
   )
 }

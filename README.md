@@ -3,23 +3,15 @@
 Backend: Async Kotlin server with H2 datastore
 Frontend: Functional React + TypeScript
 
-Requirements:
+### Steps to run
+1. Run `chmod +x run.sh` to make `run.sh` an executable
+2. Run `./run.sh` to initiate a docker-compose for the Kotlin server &
+   run the React app
+3. Visit `localhost:3000` and interact with the app
 
-Backend
-- [x] Each character has a name and six different stats which can range
-     from 1 to 20. Those stats are Strength (STR), Dexterity (DEX),
-     Constitution (CON), Intelligence (INT), Wisdom (WIS), Charisma (CHA).
-     Do server-side validation
-- [x] CRUD app
-- [x] DB. Probably MySQL
-- [] Authentication (nice to have) to control Update / Delete
-- [] Authentication likely includes users in DB
-- [] Error handling across the board
-- [] Tests
+#### Stopping
+* cmd+C will kill the client
+* `docker stop tracking_app_1` will kill the Kotlin server running in detached mode
 
-Frontend
-- [] TypeScript, functional React
-- [] Tests
-
-Deployment
-- Probably just a docker compose that runs BE/FE
+Note: there is a Dockerfile in `tracking-ui`, but it was being finicky
+with the compose so I changed how `run.sh` works

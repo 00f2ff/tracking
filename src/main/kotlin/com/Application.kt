@@ -37,7 +37,6 @@ fun Application.module() {
     DB().initialize()
     val characterService = CharacterService()
     configureRouting(characterService)
-//    configureSecurity()
 }
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)

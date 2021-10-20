@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  margin: 10px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  text-align: left;
+  padding: 5px 10px;
+}
+
+.character {
+  margin-bottom: 10px;
+}
+
+/* tr:nth-child(even) {
+  background-color: coral;
+} */
