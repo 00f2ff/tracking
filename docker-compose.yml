@@ -7,10 +7,20 @@ services:
     entrypoint:
       - "./gradlew"
       - "run"
-    environment:
-      - BASE_PATH=${BASE_PATH}
     volumes:
       - $HOME/.gradle:/root/.gradle
       - .:/app
     ports:
       - 8080:8080
+  ui:
+    container_name: ui
+    build: ./tracking-ui
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    stdin_open: true
+    command: npm start
+    depends_on:
+      - app

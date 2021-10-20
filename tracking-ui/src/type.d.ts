@@ -17,4 +17,5 @@ type ApiDataType = {
   // message: string
   status: string
   characters: ICharacter[]
+	character?: ICharacter
 }
